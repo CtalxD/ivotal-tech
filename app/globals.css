@@ -201,15 +201,15 @@ img {
   flex: 0 0 auto;
 }
 
-.logo__tile {
+.logo_tile {
   fill: var(--deep);
 }
 
-.logo__ball {
+.logo_ball {
   fill: var(--mid);
 }
 
-.logo__name {
+.logo_name {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
   font-weight: 700;
@@ -217,7 +217,7 @@ img {
   line-height: 1;
 }
 
-.logo__name span {
+.logo_name span {
   font-weight: 500;
   color: var(--muted);
 }

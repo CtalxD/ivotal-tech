@@ -15,8 +15,8 @@ export default function Footer({ year }: { year: number }) {
 
   return (
     <footer className="site-footer">
-      <div className="container site-footer__grid">
-        <div className="site-footer__brand">
+      <div className="container site-footer_grid">
+        <div className="site-footer_brand">
           <Logo />
           <p>{f.blurb}</p>
         </div>
@@ -44,7 +44,7 @@ export default function Footer({ year }: { year: number }) {
         </div>
       </div>
 
-      <div className="container site-footer__base">
+      <div className="container site-footer_base">
         <p>&copy; {year} Ivotal Technology. {f.rights}</p>
         <p>{f.prices}</p>
       </div>

@@ -6,13 +6,13 @@ export default function WorkPreview({ variant, label }: { variant: number; label
   if (variant === 1) {
     return (
       <div className="wp" aria-hidden="true">
-        <span className="wp__tag">{label}</span>
-        <div className="wp__app">
-          <div className="wp__side"><i /><i /><i /><i /><i /></div>
-          <div className="wp__main">
-            <span className="wp__top" />
-            <div className="wp__stats"><i /><i /><i /></div>
-            <div className="wp__chart">
+        <span className="wp_tag">{label}</span>
+        <div className="wp_app">
+          <div className="wp_side"><i /><i /><i /><i /><i /></div>
+          <div className="wp_main">
+            <span className="wp_top" />
+            <div className="wp_stats"><i /><i /><i /></div>
+            <div className="wp_chart">
               {bars.map((h, k) => (
                 <i key={k} style={{ height: `${h}%` }} />
               ))}
@@ -26,13 +26,13 @@ export default function WorkPreview({ variant, label }: { variant: number; label
   if (variant === 2) {
     return (
       <div className="wp" aria-hidden="true">
-        <span className="wp__tag">{label}</span>
-        <div className="wp__phone">
-          <span className="wp__notch" />
-          <span className="wp__big" />
-          <span className="wp__row" />
-          <span className="wp__row" />
-          <span className="wp__row" />
+        <span className="wp_tag">{label}</span>
+        <div className="wp_phone">
+          <span className="wp_notch" />
+          <span className="wp_big" />
+          <span className="wp_row" />
+          <span className="wp_row" />
+          <span className="wp_row" />
         </div>
       </div>
     );
@@ -40,14 +40,14 @@ export default function WorkPreview({ variant, label }: { variant: number; label
 
   return (
     <div className="wp" aria-hidden="true">
-      <span className="wp__tag">{label}</span>
-      <div className="wp__win">
-        <span className="wp__line" style={{ width: "78%" }} />
-        <span className="wp__line" style={{ width: "52%" }} />
-        <span className="wp__line wp__line--thin" style={{ width: "88%", marginTop: 6 }} />
-        <span className="wp__line wp__line--thin" style={{ width: "64%" }} />
-        <span className="wp__pill" />
-        <div className="wp__grid"><i /><i /></div>
+      <span className="wp_tag">{label}</span>
+      <div className="wp_win">
+        <span className="wp_line" style={{ width: "78%" }} />
+        <span className="wp_line" style={{ width: "52%" }} />
+        <span className="wp_line wp_line--thin" style={{ width: "88%", marginTop: 6 }} />
+        <span className="wp_line wp_line--thin" style={{ width: "64%" }} />
+        <span className="wp_pill" />
+        <div className="wp_grid"><i /><i /></div>
       </div>
     </div>
   );

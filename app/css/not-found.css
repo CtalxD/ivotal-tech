@@ -7,14 +7,14 @@
   padding-block: clamp(48px, 9vw, 120px);
 }
 
-.nf__inner {
+.nf_inner {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
 }
 
-.nf__code {
+.nf_code {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: clamp(5rem, 1rem + 20vw, 14rem);
   font-weight: 700;
@@ -27,13 +27,13 @@
   font-size: clamp(1.75rem, 1rem + 3vw, 3rem);
 }
 
-.nf__text {
+.nf_text {
   margin-bottom: 12px;
   color: var(--muted);
 }
 
 @media (max-width: 480px) {
-  .nf__inner .btn {
+  .nf_inner .btn {
     width: 100%;
   }
 }

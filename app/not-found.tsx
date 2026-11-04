@@ -11,10 +11,10 @@ export default function NotFound() {
 
   return (
     <section className="nf">
-      <div className="container nf__inner">
-        <p className="nf__code" aria-hidden="true">404</p>
+      <div className="container nf_inner">
+        <p className="nf_code" aria-hidden="true">404</p>
         <h1>{t.title}</h1>
-        <p className="nf__text">{t.text}</p>
+        <p className="nf_text">{t.text}</p>
         <Link href="/" className="btn btn--primary btn--lg">{t.button}</Link>
       </div>
     </section>

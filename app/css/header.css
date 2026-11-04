@@ -8,7 +8,7 @@
   background: var(--bg);
 }
 
-.site-header__bar {
+.site-header_bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,7 +73,7 @@
   transform: scaleX(1);
 }
 
-.site-nav__actions {
+.site-nav_actions {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -91,9 +91,9 @@
   cursor: pointer;
 }
 
-.menu-btn__bars,
-.menu-btn__bars::before,
-.menu-btn__bars::after {
+.menu-btn_bars,
+.menu-btn_bars::before,
+.menu-btn_bars::after {
   position: absolute;
   left: 50%;
   width: 20px;
@@ -105,34 +105,34 @@
     top 0.25s;
 }
 
-.menu-btn__bars {
+.menu-btn_bars {
   top: 50%;
   margin-top: -1px;
 }
 
-.menu-btn__bars::before,
-.menu-btn__bars::after {
+.menu-btn_bars::before,
+.menu-btn_bars::after {
   content: "";
 }
 
-.menu-btn__bars::before {
+.menu-btn_bars::before {
   top: -7px;
 }
 
-.menu-btn__bars::after {
+.menu-btn_bars::after {
   top: 7px;
 }
 
-.menu-btn[aria-expanded="true"] .menu-btn__bars {
+.menu-btn[aria-expanded="true"] .menu-btn_bars {
   background: transparent;
 }
 
-.menu-btn[aria-expanded="true"] .menu-btn__bars::before {
+.menu-btn[aria-expanded="true"] .menu-btn_bars::before {
   top: 0;
   transform: translateX(-50%) rotate(45deg);
 }
 
-.menu-btn[aria-expanded="true"] .menu-btn__bars::after {
+.menu-btn[aria-expanded="true"] .menu-btn_bars::after {
   top: 0;
   transform: translateX(-50%) rotate(-45deg);
 }
@@ -185,14 +185,14 @@
     color: var(--mid);
   }
 
-  .site-nav__actions {
+  .site-nav_actions {
     flex-wrap: wrap;
     justify-content: space-between;
   }
 }
 
 @media (max-width: 480px) {
-  .site-nav__actions .btn {
+  .site-nav_actions .btn {
     flex: 1 1 100%;
   }
 }

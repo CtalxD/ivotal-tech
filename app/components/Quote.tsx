@@ -58,13 +58,13 @@ export default function Quote({
 
   return (
     <div className="quote">
-      <span className="quote__stamp" aria-hidden="true">{stamp}</span>
+      <span className="quote_stamp" aria-hidden="true">{stamp}</span>
 
-      <fieldset className="quote__pick">
-        <legend className="quote__label">{label}</legend>
-        <div className="quote__chips">
+      <fieldset className="quote_pick">
+        <legend className="quote_label">{label}</legend>
+        <div className="quote_chips">
           {names.map((n, k) => (
-            <label key={k} className="quote__chip">
+            <label key={k} className="quote_chip">
               <input
                 type="radio"
                 name="quote-tier"
@@ -78,25 +78,25 @@ export default function Quote({
         </div>
       </fieldset>
 
-      <div key={i} className="quote__body">
-        <p className="quote__text">{texts[i]}</p>
-        <ul className="quote__list">
+      <div key={i} className="quote_body">
+        <p className="quote_text">{texts[i]}</p>
+        <ul className="quote_list">
           {lists[i].map((it, j) => (
             <li key={j} style={{ "--n": j } as CSSProperties}>{it}</li>
           ))}
         </ul>
       </div>
 
-      <div className="quote__tear" aria-hidden="true" />
+      <div className="quote_tear" aria-hidden="true" />
 
-      <div className="quote__foot">
+      <div className="quote_foot">
         <p className="sr-only" aria-live="polite">{names[i]}: {from} {usd(prices[i])}</p>
-        <div className="quote__price" aria-hidden="true">
+        <div className="quote_price" aria-hidden="true">
           <small>{from}</small>
           {usd(shown)}
         </div>
-        <p className="quote__caption">{caption}</p>
-        <div className="quote__bars" aria-hidden="true" />
+        <p className="quote_caption">{caption}</p>
+        <div className="quote_bars" aria-hidden="true" />
       </div>
     </div>
   );

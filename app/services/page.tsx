@@ -69,12 +69,12 @@ export default function ServicesPage() {
       <section className="svc-hero">
         <div className="container">
           <h1>{t.services.title}</h1>
-          <p className="svc-hero__lede">{t.services.intro}</p>
+          <p className="svc-hero_lede">{t.services.intro}</p>
         </div>
       </section>
 
       <section ref={lab} className="svc-lab">
-        <div className="container svc-lab__grid">
+        <div className="container svc-lab_grid">
           <div className="svc-tabs" role="tablist" aria-label={t.services.jump} onKeyDown={onKeyDown}>
             {items.map((x, i) => (
               <button
@@ -88,9 +88,9 @@ export default function ServicesPage() {
                 className="svc-tab"
                 onClick={() => select(i)}
               >
-                <span className="svc-tab__n" aria-hidden="true">{pad(i)}</span>
-                <span className="svc-tab__name">{x.name}</span>
-                <span className="svc-tab__price">
+                <span className="svc-tab_n" aria-hidden="true">{pad(i)}</span>
+                <span className="svc-tab_name">{x.name}</span>
+                <span className="svc-tab_price">
                   {tierPrices[i] ? `${t.ui.from} $${tierPrices[i].toLocaleString("en-US")}` : s.scoped}
                 </span>
               </button>
@@ -104,12 +104,12 @@ export default function ServicesPage() {
             aria-labelledby={`tab-${serviceIds[active]}`}
             className="svc-sheet"
           >
-            <header className="svc-sheet__head">
+            <header className="svc-sheet_head">
               <div>
                 <h2>{it.name}</h2>
-                <p className="svc-sheet__text">{it.text}</p>
+                <p className="svc-sheet_text">{it.text}</p>
               </div>
-              <div className="svc-sheet__price">
+              <div className="svc-sheet_price">
                 <span>{s.price}</span>
                 <strong>
                   {price ? (
@@ -124,7 +124,7 @@ export default function ServicesPage() {
               </div>
             </header>
 
-            <div className="svc-sheet__cols">
+            <div className="svc-sheet_cols">
               <section className="svc-col svc-col--in">
                 <h3>{s.includedLabel}</h3>
                 <ul>
@@ -144,7 +144,7 @@ export default function ServicesPage() {
               </section>
             </div>
 
-            <div className="svc-sheet__fit">
+            <div className="svc-sheet_fit">
               <h3>{s.fit}</h3>
               <ul className="svc-fit">
                 {s.fits[active].map((f, j) => (
@@ -153,7 +153,7 @@ export default function ServicesPage() {
               </ul>
             </div>
 
-            <footer className="svc-sheet__foot">
+            <footer className="svc-sheet_foot">
               <p>{price ? s.priceNote : s.scopedNote}</p>
               <Link className="btn btn--primary" href={`/contact?service=${serviceIds[active]}`}>{s.start}</Link>
             </footer>
@@ -172,13 +172,13 @@ export default function ServicesPage() {
               <li key={i}>
                 <a
                   href={`#${serviceIds[i]}`}
-                  className="svc-pick__card"
+                  className="svc-pick_card"
                   onClick={(e) => {
                     e.preventDefault();
                     jumpTo(i);
                   }}
                 >
-                  <span className="svc-pick__n" aria-hidden="true">{pad(i)}</span>
+                  <span className="svc-pick_n" aria-hidden="true">{pad(i)}</span>
                   <h3>{x.name}</h3>
                   <p><strong>{s.pickIf}</strong> {s.pick[i].charAt(0).toLowerCase() + s.pick[i].slice(1)}</p>
                 </a>
@@ -197,9 +197,9 @@ export default function ServicesPage() {
           <ul className="svc-tickets">
             {facts.items.map((f, i) => (
               <li key={i} className="ticket">
-                <span className="ticket__check" aria-hidden="true" />
-                <p className="ticket__text">{f}</p>
-                <span className="ticket__stub">{facts.label}</span>
+                <span className="ticket_check" aria-hidden="true" />
+                <p className="ticket_text">{f}</p>
+                <span className="ticket_stub">{facts.label}</span>
               </li>
             ))}
           </ul>

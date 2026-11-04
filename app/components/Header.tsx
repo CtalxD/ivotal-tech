@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <div className="container site-header__bar">
+      <div className="container site-header_bar">
         <Logo />
 
         <nav id="primary-nav" className={`site-nav${open ? " site-nav--open" : ""}`} aria-label={dict.ui.primaryNav}>
@@ -50,7 +50,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className="site-nav__actions">
+          <div className="site-nav_actions">
             <LangSwitch />
             <Link href="/contact" className="btn btn--primary" onClick={close}>{dict.nav.cta}</Link>
           </div>
@@ -64,7 +64,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
         >
           <span className="sr-only">{open ? dict.ui.menuClose : dict.ui.menuOpen}</span>
-          <span className="menu-btn__bars" aria-hidden="true" />
+          <span className="menu-btn_bars" aria-hidden="true" />
         </button>
       </div>
     </header>

@@ -19,11 +19,11 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="container">
-          <div className="hero__grid">
+          <div className="hero_grid">
             <div>
               <Reveal as="h1" delay={0}>{t.hero.title}</Reveal>
-              <Reveal as="p" delay={120} className="hero__lede">{t.hero.lede}</Reveal>
-              <Reveal delay={240} className="hero__actions">
+              <Reveal as="p" delay={120} className="hero_lede">{t.hero.lede}</Reveal>
+              <Reveal delay={240} className="hero_actions">
                 <Link className="btn btn--primary btn--lg" href="/contact">{t.hero.primary}</Link>
                 <Link className="btn btn--outline btn--lg" href="/services">{t.hero.secondary}</Link>
               </Reveal>
@@ -71,10 +71,10 @@ export default function Home() {
             {items.map((s, i) => (
               <li key={i}>
                 <Link href={`/services#${serviceIds[i]}`} className="svc-card">
-                  <span className="svc-card__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="svc-card_n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{s.name}</h3>
                   <p>{s.text}</p>
-                  <span className="svc-card__more">
+                  <span className="svc-card_more">
                     {t.services.more} <span aria-hidden="true">→</span>
                   </span>
                 </Link>
@@ -96,15 +96,15 @@ export default function Home() {
             {t.hero.tiers.map((name, i) => (
               <li key={i} className={`tier tier--${i + 1}`}>
                 <div>
-                  <h3 className="tier__name">{name}</h3>
-                  <p className="tier__text">{t.hero.tierText[i]}</p>
+                  <h3 className="tier_name">{name}</h3>
+                  <p className="tier_text">{t.hero.tierText[i]}</p>
                 </div>
                 <div>
-                  <div className="tier__price">
+                  <div className="tier_price">
                     <small>{t.ui.from}</small>
                     {`$${tierPrices[i].toLocaleString("en-US")}`}
                   </div>
-                  <Link className="tier__link" href="/contact">{t.hero.primary}</Link>
+                  <Link className="tier_link" href="/contact">{t.hero.primary}</Link>
                 </div>
               </li>
             ))}
@@ -121,7 +121,7 @@ export default function Home() {
           <ol className="steps">
             {t.process.steps.map((s, i) => (
               <li key={i}>
-                <span className="steps__n">{i + 1}</span>
+                <span className="steps_n">{i + 1}</span>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
               </li>
@@ -132,7 +132,7 @@ export default function Home() {
 
       <section id="faq" className="section">
         <div className="container faq">
-          <div className="faq__intro">
+          <div className="faq_intro">
             <h2>{l.faq.title}</h2>
             <p>{l.faq.intro}</p>
           </div>
