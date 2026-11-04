@@ -8,7 +8,7 @@ import { serviceIds } from "../i18n/dictionaries";
 import Pick, { type PickHandle } from "./Pick";
 import "../css/contact.css";
 
-const email = "ivotaltechnologies@gmail.com";
+const email = "evotaltechnologies@gmail.com";
 const ids = serviceIds as readonly string[];
 
 // Web3Forms access key from .env.local (NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY)
