@@ -1,69 +1,133 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+
+import Reveal, { Words } from "./components/Reveal";
+import { useLang } from "./i18n/LanguageProvider";
+import "./css/home.css";
+
+const tierKeys = ["a", "b", "c"];
+const tierPrices = ["$400", "$1,000", "$1,500"];
+
+// Replace with paths in /public (e.g. "/work/clinic.png") once the designs are ready.
+const workImages = ["", "", ""];
 
 export default function Home() {
+  const { dict: t } = useLang();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section className="hero">
+        <div className="container hero__grid">
+          <div className="hero__copy">
+            <Reveal as="h1" variant="words" delay={650}>
+              <Words text={t.hero.title} />
+            </Reveal>
+            <Reveal as="p" variant="rise" delay={1150} className="hero__lede">{t.hero.lede}</Reveal>
+            <Reveal variant="rise" delay={1300} className="hero__actions">
+              <a className="btn btn--mint btn--lg" href="#contact">{t.hero.primary}</a>
+              <a className="btn btn--outline btn--lg" href="#services">{t.hero.secondary}</a>
+            </Reveal>
+          </div>
+
+          <figure className="stairs-wrap">
+            <ul className="stairs" aria-label={t.hero.pricesLabel}>
+              {t.hero.tiers.map((name, i) => (
+                <li key={tierKeys[i]}>
+                  <a className={`stairs__${tierKeys[i]}`} href="#services" style={{ ["--i" as string]: i }}>
+                    <span className="stairs__name">{name}</span>
+                    <span className="stairs__price">
+                      <small>{t.ui.from}</small>
+                      {tierPrices[i]}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <figcaption>{t.hero.caption}</figcaption>
+          </figure>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="services" className="section">
+        <div className="container">
+          <div className="section__head">
+            <Reveal as="h2" variant="words"><Words text={t.services.title} /></Reveal>
+            <Reveal as="p" variant="rise" delay={200}>{t.services.intro}</Reveal>
+          </div>
+          <div className="services">
+            {t.services.items.map((s, i) => (
+              <Reveal as="article" variant="line" key={i} className="service">
+                <div>
+                  <h3>{s.name}</h3>
+                  <p>{s.text}</p>
+                </div>
+                <ul className="ticks">
+                  {s.items.map((it, j) => (
+                    <li key={j}>{it}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="process" className="section section--dark">
+        <div className="container">
+          <div className="section__head">
+            <Reveal as="h2" variant="words"><Words text={t.process.title} /></Reveal>
+            <Reveal as="p" variant="rise" delay={200}>{t.process.intro}</Reveal>
+          </div>
+          <ol className="steps">
+            {t.process.steps.map((s, i) => (
+              <Reveal as="li" variant="line" delay={i * 140} key={i}>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="work" className="section">
+        <div className="container">
+          <div className="section__head">
+            <Reveal as="h2" variant="words"><Words text={t.work.title} /></Reveal>
+            <Reveal as="p" variant="rise" delay={200}>{t.work.intro}</Reveal>
+          </div>
+          <div className="work">
+            {t.work.kinds.map((kind, i) => (
+              <Reveal as="figure" variant="mask" delay={i * 160} key={i} className="work__item">
+                <div className="work__frame">
+                  {workImages[i] ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={workImages[i]} alt={`${t.work.projectName}, ${kind}`} />
+                  ) : (
+                    <span>{t.work.placeholder}</span>
+                  )}
+                </div>
+                <figcaption>
+                  <strong>{t.work.projectName}</strong>
+                  <span>{kind}</span>
+                </figcaption>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="cta-band">
+        <div className="container cta">
+          <div>
+            <Reveal as="h2" variant="words"><Words text={t.cta.title} /></Reveal>
+            <Reveal as="p" variant="rise" delay={300}>{t.cta.text}</Reveal>
+          </div>
+          {/* Replace with your real address */}
+          <Reveal variant="rise" delay={450}>
+            <a className="btn btn--dark btn--lg" href="mailto:hello@ivotal.com">hello@ivotal.com</a>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }
