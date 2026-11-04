@@ -1,7 +1,39 @@
-/* app/css/not-found.css
-   Says what happened, then gives one clear way out. */
-.nf { display: flex; align-items: center; min-height: calc(100svh - var(--header-h) - 120px); padding-block: clamp(56px, 9vw, 120px); }
-.nf__inner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
-.nf__code { font-family: var(--font-display), system-ui, sans-serif; font-size: clamp(6rem, 20vw, 14rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.85; color: var(--mid); }
-.nf h1 { font-size: clamp(2rem, 4vw, 3rem); }
-.nf__text { margin-bottom: 12px; color: var(--muted); }
+/* app/css/not-found.css */
+
+.nf {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--header-h) - 120px);
+  padding-block: clamp(48px, 9vw, 120px);
+}
+
+.nf__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.nf__code {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(5rem, 1rem + 20vw, 14rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  color: var(--mid);
+}
+
+.nf h1 {
+  font-size: clamp(1.75rem, 1rem + 3vw, 3rem);
+}
+
+.nf__text {
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .nf__inner .btn {
+    width: 100%;
+  }
+}

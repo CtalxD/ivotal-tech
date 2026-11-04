@@ -2,6 +2,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { dictionaries, isLocale, type Dict, type Locale } from "./dictionaries";
 
 const STORAGE_KEY = "ivotal-locale";
@@ -9,9 +10,15 @@ const STORAGE_KEY = "ivotal-locale";
 type Ctx = { locale: Locale; dict: Dict; setLocale: (l: Locale) => void };
 const LanguageContext = createContext<Ctx | null>(null);
 
-// English is the default. A visitor's choice is remembered in their browser.
+function pickMeta(dict: Dict, pathname: string | null) {
+  if (pathname?.startsWith("/services")) return dict.servicesMeta;
+  if (pathname?.startsWith("/contact")) return dict.contactMeta;
+  return dict.meta;
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
+  const pathname = usePathname();
 
   useEffect(() => {
     try {
@@ -21,11 +28,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const { meta } = dictionaries[locale];
+    const meta = pickMeta(dictionaries[locale], pathname);
     document.documentElement.lang = locale;
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute("content", meta.description);
-  }, [locale]);
+  }, [locale, pathname]);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);

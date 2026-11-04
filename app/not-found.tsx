@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useLang } from "./i18n/LanguageProvider";
 import "./css/not-found.css";
 
-// Replaces Next.js's built-in 404 page, which injects its own black page styles.
 export default function NotFound() {
   const { dict } = useLang();
   const t = dict.notFound;

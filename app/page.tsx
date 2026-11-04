@@ -1,44 +1,22 @@
 // app/page.tsx
 "use client";
 
-import { useRef, useState } from "react";
+import Link from "next/link";
 import Reveal from "./components/Reveal";
-import Scene from "./components/Scene";
-import Preview, { type PreviewName } from "./components/Preview";
+import Quote from "./components/Quote";
 import { useLang } from "./i18n/LanguageProvider";
+import { serviceIds } from "./i18n/dictionaries";
 import { landing } from "./i18n/landing";
+import { tierPrices } from "./i18n/prices";
 import "./css/home.css";
-
-const tierPrices = ["$400", "$1,000", "$1,500"];
-
-// One picture per service, in the same order as the dictionary
-const previews: PreviewName[] = ["web", "app", "software", "design"];
 
 export default function Home() {
   const { dict: t, locale } = useLang();
   const l = landing[locale];
-  const [active, setActive] = useState(0);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const items = t.services.items;
-  const current = items[active];
-
-  // Arrow keys, Home and End move between tabs, as people expect from a tab list
-  function onTabKey(e: React.KeyboardEvent, i: number) {
-    const n = items.length;
-    let next = i;
-    if (e.key === "ArrowDown" || e.key === "ArrowRight") next = (i + 1) % n;
-    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = (i - 1 + n) % n;
-    else if (e.key === "Home") next = 0;
-    else if (e.key === "End") next = n - 1;
-    else return;
-    e.preventDefault();
-    setActive(next);
-    tabRefs.current[next]?.focus();
-  }
 
   return (
     <>
-      {/* 1. Hero: outcome, one main action, proof of the work, and the facts that remove doubt */}
       <section className="hero">
         <div className="container">
           <div className="hero__grid">
@@ -46,22 +24,25 @@ export default function Home() {
               <Reveal as="h1" delay={0}>{t.hero.title}</Reveal>
               <Reveal as="p" delay={120} className="hero__lede">{t.hero.lede}</Reveal>
               <Reveal delay={240} className="hero__actions">
-                <a className="btn btn--primary btn--lg" href="#contact">{t.hero.primary}</a>
-                <a className="btn btn--outline btn--lg" href="#services">{t.hero.secondary}</a>
+                <Link className="btn btn--primary btn--lg" href="/contact">{t.hero.primary}</Link>
+                <Link className="btn btn--outline btn--lg" href="/services">{t.hero.secondary}</Link>
               </Reveal>
             </div>
-            <Scene />
-          </div>
 
-          <ul className="facts" aria-label={l.facts.label}>
-            {l.facts.items.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
+            <Quote
+              label={t.hero.pricesLabel}
+              names={t.hero.tiers}
+              texts={t.hero.tierText}
+              lists={items.slice(0, 3).map((s) => s.items)}
+              prices={tierPrices}
+              from={t.ui.from}
+              caption={t.hero.caption}
+              stamp={l.facts.items[0]}
+            />
+          </div>
         </div>
       </section>
 
-      {/* 2. Why: the reasons to pick this studio */}
       <section className="section">
         <div className="container">
           <div className="head">
@@ -79,7 +60,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Services */}
       <section id="services" className="section section--surface">
         <div className="container">
           <div className="head">
@@ -87,44 +67,25 @@ export default function Home() {
             <p>{t.services.intro}</p>
           </div>
 
-          <div className="svc">
-            <div className="tabs" role="tablist" aria-label={t.services.title} aria-orientation="vertical">
-              {items.map((s, i) => (
-                <button
-                  key={i}
-                  ref={(el) => { tabRefs.current[i] = el; }}
-                  id={`tab-${i}`}
-                  type="button"
-                  role="tab"
-                  className="tab"
-                  aria-selected={active === i}
-                  aria-controls="svc-panel"
-                  tabIndex={active === i ? 0 : -1}
-                  onClick={() => setActive(i)}
-                  onKeyDown={(e) => onTabKey(e, i)}
-                >
-                  {s.name}
-                </button>
-              ))}
-            </div>
+          <ul className="svc-cards">
+            {items.map((s, i) => (
+              <li key={i}>
+                <Link href={`/services#${serviceIds[i]}`} className="svc-card">
+                  <span className="svc-card__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{s.name}</h3>
+                  <p>{s.text}</p>
+                  <span className="svc-card__more">
+                    {t.services.more} <span aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-            <div key={active} id="svc-panel" role="tabpanel" aria-labelledby={`tab-${active}`} tabIndex={0} className="panel">
-              <div>
-                <h3>{current.name}</h3>
-                <p className="panel__text">{current.text}</p>
-                <ul className="panel__list">
-                  {current.items.map((it, j) => (
-                    <li key={j}>{it}</li>
-                  ))}
-                </ul>
-              </div>
-              <Preview name={previews[active]} />
-            </div>
-          </div>
+          <Link className="btn btn--primary btn--lg svc-all" href="/services">{t.services.all}</Link>
         </div>
       </section>
 
-      {/* 4. Prices: steps rise and darken with scope */}
       <section id="prices" className="section section--tint">
         <div className="container">
           <div className="head">
@@ -141,9 +102,9 @@ export default function Home() {
                 <div>
                   <div className="tier__price">
                     <small>{t.ui.from}</small>
-                    {tierPrices[i]}
+                    {`$${tierPrices[i].toLocaleString("en-US")}`}
                   </div>
-                  <a className="tier__link" href="#contact">{t.hero.primary}</a>
+                  <Link className="tier__link" href="/contact">{t.hero.primary}</Link>
                 </div>
               </li>
             ))}
@@ -151,7 +112,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Process: a real sequence, so numbered and joined by a rail */}
       <section id="process" className="section section--deep">
         <div className="container">
           <div className="head">
@@ -170,7 +130,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Questions: clears the last doubts before the final action */}
       <section id="faq" className="section">
         <div className="container faq">
           <div className="faq__intro">
@@ -188,14 +147,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Final action */}
-      <section id="contact" className="cta-band">
+      <section className="cta-band">
         <div className="container cta">
           <h2>{t.cta.title}</h2>
           <div>
             <p>{t.cta.text}</p>
-            {/* Replace with your real address */}
-            <a className="btn btn--primary btn--lg" href="mailto:hello@ivotal.com">hello@ivotal.com</a>
+            <Link className="btn btn--primary btn--lg" href="/contact">{t.nav.cta}</Link>
           </div>
         </div>
       </section>

@@ -3,9 +3,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Tag = "div" | "section" | "article" | "h1" | "h2" | "p" | "ul" | "ol" | "li";
+type Tag = "div" | "h1" | "p";
 
-// Fades and lifts an element in once it scrolls into view. The animation lives in css/home.css.
 export default function Reveal({
   as = "div",
   delay = 0,

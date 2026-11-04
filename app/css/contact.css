@@ -1,0 +1,154 @@
+/* app/css/contact.css */
+
+.contact {
+  padding-block: clamp(40px, 8vw, 112px);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.contact__grid > * {
+  min-width: 0;
+}
+
+.contact h1 {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 1rem + 5vw, 5.25rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.contact__lede {
+  margin-top: 24px;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  color: var(--muted);
+}
+
+.contact__sub {
+  margin-top: clamp(32px, 5vw, 48px);
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+}
+
+.contact__list {
+  margin-top: 12px;
+}
+
+.contact__list li {
+  position: relative;
+  padding: 12px 0 12px 30px;
+  border-top: 1px solid var(--line);
+}
+
+.contact__list li::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 4px;
+  width: 12px;
+  height: 6px;
+  border-bottom: 2.5px solid var(--mid);
+  border-left: 2.5px solid var(--mid);
+  transform: rotate(-45deg);
+}
+
+.contact__label {
+  margin-top: 32px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.contact__mail {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--deep);
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.contact__mail:hover {
+  color: var(--mid);
+}
+
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(20px, 3vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  background: var(--surface);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 2px solid var(--deep);
+  border-radius: var(--r-control);
+  background: var(--white);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 3px solid var(--mid);
+  outline-offset: 2px;
+}
+
+.field ::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.contact__card .btn {
+  width: 100%;
+}
+
+.contact__note {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact h1,
+  .contact__lede {
+    max-width: none;
+  }
+}

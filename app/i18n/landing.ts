@@ -1,7 +1,4 @@
 // app/i18n/landing.ts
-// Copy for the landing sections added around the existing dictionary: quick facts, reasons, questions.
-// Every statement here restates something already promised in dictionaries.ts, so nothing new is claimed.
-// Check each answer against how you really work before publishing.
 import type { Locale } from "./dictionaries";
 
 const en = {
@@ -23,8 +20,8 @@ const en = {
         text: "Every project starts from a fixed base price. Anything beyond it is scoped with you and quoted before work begins.",
       },
       {
-        title: "A site you can edit",
-        text: "A content management system comes with every website, so your team changes text and images without calling a developer.",
+        title: "Edit it yourself, if you want",
+        text: "Add a content management system to a website as an extra, and your team changes text and images without calling a developer.",
       },
       {
         title: "Custom code where you need it",
@@ -42,7 +39,7 @@ const en = {
     items: [
       {
         q: "What does the starting price include?",
-        a: "The core of each type of project. For a website that is a mobile-ready layout, basic SEO setup and a content management system. We confirm the exact scope in the brief.",
+        a: "The core of each type of project. For a website that is a mobile responsive layout and basic SEO setup. A content management system and monthly maintenance are extra. We confirm the exact scope in the brief.",
       },
       {
         q: "What if I need more than the base?",
@@ -50,11 +47,11 @@ const en = {
       },
       {
         q: "Can my team edit the website ourselves?",
-        a: "Yes. Websites include a content management system, so your team can update text and images on their own.",
+        a: "Yes, with a content management system. It is not part of the starting price, so we quote it as an extra.",
       },
       {
         q: "Do you look after the project after launch?",
-        a: "If you want us to. We keep it updated, secure and backed up. Monthly maintenance is available for web applications and recommended for custom software.",
+        a: "If you want us to. Monthly maintenance keeps it updated, secure and backed up, and is charged separately. It is available for websites and web applications and recommended for custom software.",
       },
       {
         q: "Where do you work?",
@@ -89,8 +86,8 @@ const es: Landing = {
         text: "Cada proyecto parte de un precio base fijo. Todo lo que vaya más allá se define contigo y se cotiza antes de empezar.",
       },
       {
-        title: "Un sitio que puedes editar",
-        text: "Todos los sitios web incluyen un sistema de gestión de contenido, para que tu equipo cambie textos e imágenes sin llamar a un desarrollador.",
+        title: "Edítalo tú, si quieres",
+        text: "Agrega un sistema de gestión de contenido a tu sitio web como extra, y tu equipo cambia textos e imágenes sin llamar a un desarrollador.",
       },
       {
         title: "Código a la medida donde lo necesites",
@@ -108,7 +105,7 @@ const es: Landing = {
     items: [
       {
         q: "¿Qué incluye el precio inicial?",
-        a: "Lo esencial de cada tipo de proyecto. En un sitio web: diseño adaptable a móviles, SEO básico y un sistema de gestión de contenido. El alcance exacto lo confirmamos en el brief.",
+        a: "Lo esencial de cada tipo de proyecto. En un sitio web: diseño adaptable a móviles y SEO básico. El sistema de gestión de contenido y el mantenimiento mensual son extras. El alcance exacto lo confirmamos en el brief.",
       },
       {
         q: "¿Y si necesito más que lo básico?",
@@ -116,11 +113,11 @@ const es: Landing = {
       },
       {
         q: "¿Mi equipo puede editar el sitio por su cuenta?",
-        a: "Sí. Los sitios web incluyen un sistema de gestión de contenido para que tu equipo actualice textos e imágenes solo.",
+        a: "Sí, con un sistema de gestión de contenido. No forma parte del precio inicial, así que lo cotizamos como extra.",
       },
       {
         q: "¿Se encargan del proyecto después del lanzamiento?",
-        a: "Si tú quieres. Lo mantenemos actualizado, seguro y respaldado. El mantenimiento mensual está disponible para aplicaciones web y recomendado para software a la medida.",
+        a: "Si tú quieres. El mantenimiento mensual lo mantiene actualizado, seguro y respaldado, y se cobra aparte. Está disponible para sitios web y aplicaciones web, y es recomendado para software a la medida.",
       },
       {
         q: "¿Dónde trabajan?",

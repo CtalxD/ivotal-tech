@@ -1,7 +1,4 @@
 // app/components/Preview.tsx
-// One drawn picture per service, in the same order as the dictionary: website, web application,
-// custom software, interface design. Shown beside the service text so each tab looks like what it is.
-
 export type PreviewName = "web" | "app" | "software" | "design";
 
 const bars = [60, 92, 70, 120, 86, 140, 104];
@@ -24,7 +21,7 @@ export default function Preview({ name }: { name: PreviewName }) {
           <rect x="64" y="182" width="176" height="9" rx="4.5" className="f-tint2" />
           <rect x="64" y="208" width="96" height="30" rx="9" className="f-mid" />
           <rect x="300" y="100" width="120" height="138" rx="14" className="f-tint" />
-          <circle cx="360" cy="148" r="20" className="f-tint2" />
+          <circle cx="360" cy="148" r="20" className="f-gold" />
           <rect x="318" y="190" width="84" height="30" rx="8" className="f-tint2" />
           <rect x="64" y="262" width="100" height="40" rx="10" className="f-tint" />
           <rect x="178" y="262" width="100" height="40" rx="10" className="f-tint" />
@@ -44,7 +41,7 @@ export default function Preview({ name }: { name: PreviewName }) {
           <rect x="224" y="64" width="100" height="56" rx="10" className="f-deep2" />
           <rect x="336" y="64" width="92" height="56" rx="10" className="f-deep2" />
           {bars.map((h, k) => (
-            <rect key={k} x={116 + k * 44} y={300 - h} width="28" height={h} rx="7" className={k === 5 ? "f-surface" : "f-tint2"} />
+            <rect key={k} x={116 + k * 44} y={300 - h} width="28" height={h} rx="7" className={k === 5 ? "f-gold" : "f-tint2"} />
           ))}
         </>
       )}
@@ -58,7 +55,7 @@ export default function Preview({ name }: { name: PreviewName }) {
           <rect x="60" y="100" width="120" height="10" rx="5" className="f-mid" />
           <rect x="80" y="122" width="150" height="10" rx="5" className="f-tint2" />
           <rect x="80" y="144" width="96" height="10" rx="5" className="f-tint2" />
-          <rect x="80" y="166" width="132" height="10" rx="5" className="f-mid" />
+          <rect x="80" y="166" width="132" height="10" rx="5" className="f-gold" />
           <rect x="60" y="188" width="56" height="10" rx="5" className="f-mid" />
           <rect x="60" y="222" width="140" height="10" rx="5" className="f-tint2" />
           <rect x="80" y="244" width="110" height="10" rx="5" className="f-tint2" />
@@ -92,7 +89,7 @@ export default function Preview({ name }: { name: PreviewName }) {
           <rect x="36" y="268" width="48" height="48" rx="12" className="f-ink" />
           <rect x="96" y="268" width="48" height="48" rx="12" className="f-deep" />
           <rect x="156" y="268" width="48" height="48" rx="12" className="f-mid" />
-          <rect x="216" y="268" width="48" height="48" rx="12" className="f-tint2" />
+          <rect x="216" y="268" width="48" height="48" rx="12" className="f-gold" />
           <rect x="276" y="268" width="48" height="48" rx="12" className="f-surface" />
         </>
       )}
