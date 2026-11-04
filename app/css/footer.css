@@ -1,0 +1,30 @@
+/* app/css/footer.css */
+.site-footer { position: relative; overflow: hidden; background: var(--ink); color: var(--paper); padding-top: clamp(64px, 8vw, 104px); }
+.site-footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 64px; }
+.site-footer__brand p { margin-top: 22px; max-width: 36ch; color: var(--on-dark); font-size: 1.05rem; }
+.site-footer h2 { margin-bottom: 18px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0; color: var(--paper); }
+.site-footer li + li { margin-top: 10px; }
+.site-footer nav a { color: var(--on-dark); transition: color 0.2s; }
+.site-footer nav a:hover { color: #fff; }
+.site-footer :focus-visible { outline-color: var(--bronze-soft); }
+
+.site-footer .logo { color: var(--paper); }
+.site-footer .logo__tile { fill: var(--paper); }
+.site-footer .logo__glyph { fill: var(--ink); }
+.site-footer .logo__v { fill: none; stroke: var(--ink); }
+.site-footer .logo__dot { fill: var(--bronze); }
+.site-footer .logo__sub { color: var(--on-dark); }
+
+.site-footer .lang { border-color: rgba(250, 250, 248, 0.22); }
+.site-footer .lang button { color: var(--on-dark); }
+.site-footer .lang button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+.site-footer .lang button[aria-pressed="false"]:hover { color: #fff; }
+
+.site-footer__base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 24px; border-top: 1px solid rgba(250, 250, 248, 0.14); color: var(--on-dark); font-size: 0.9rem; }
+.site-footer__base p { font-family: var(--font-display), system-ui, sans-serif; font-size: 0.9rem; }
+
+/* Oversized wordmark, decorative only */
+.site-footer::after { content: "ivotal"; content: "ivotal" / ""; display: block; margin: 8px 0 -0.14em; padding-inline: var(--gutter); font-size: clamp(6.5rem, 26vw, 22rem); font-weight: 600; letter-spacing: -0.07em; line-height: 0.8; color: rgba(250, 250, 248, 0.07); pointer-events: none; user-select: none; }
+
+@media (max-width: 900px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } .site-footer__brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .site-footer__grid { grid-template-columns: 1fr; } }
