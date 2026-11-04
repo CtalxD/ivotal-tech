@@ -8,7 +8,7 @@ import { serviceIds } from "../i18n/dictionaries";
 import Pick, { type PickHandle } from "./Pick";
 import "../css/contact.css";
 
-const email = "evotaltechnology@gmail.com";
+const email = "ivotaltechnologies@gmail.com";
 const ids = serviceIds as readonly string[];
 
 // Web3Forms access key from .env.local (NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY)
@@ -162,30 +162,30 @@ export default function Contact() {
   return (
     <section className="contact">
       <div className="container">
-        <header className="contact_head">
+        <header className="contact__head">
           <h1>{c.title}</h1>
-          <p className="contact_lede">{c.lede}</p>
+          <p className="contact__lede">{c.lede}</p>
         </header>
 
         {sent ? (
           <div className="thanks">
-            <svg className="thanks_check" viewBox="0 0 80 80" width="88" height="88" aria-hidden="true">
+            <svg className="thanks__check" viewBox="0 0 80 80" width="88" height="88" aria-hidden="true">
               <circle cx="40" cy="40" r="36" pathLength={1} />
               <path d="M24 41l11 11 21-24" pathLength={1} />
             </svg>
 
-            <h2 className="thanks_title" tabIndex={-1} ref={thanksRef}>
+            <h2 className="thanks__title" tabIndex={-1} ref={thanksRef}>
               {c.sent.title.replace("{name}", sent.name)}
             </h2>
-            <p className="thanks_text">{c.sent.text}</p>
+            <p className="thanks__text">{c.sent.text}</p>
 
-            <ul className="thanks_recap">
+            <ul className="thanks__recap">
               {[sent.service, sent.budget, sent.email].map((item, i) => (
                 <li key={i} style={step(i + 3)}>{item}</li>
               ))}
             </ul>
 
-            <div className="thanks_actions">
+            <div className="thanks__actions">
               <button type="button" className="btn btn--primary btn--lg" onClick={again}>
                 {c.sent.again}
               </button>
@@ -193,7 +193,7 @@ export default function Contact() {
           </div>
         ) : (
           <form className="letter" onSubmit={onSubmit} onChange={onChange}>
-            <p className="letter_sentence">
+            <p className="letter__sentence">
               {say(f.hi)}
               <input
                 className="blank blank--name"
@@ -258,7 +258,7 @@ export default function Contact() {
             </p>
 
             {/* Fills in as the sentence is completed */}
-            <div className="letter_progress" aria-hidden="true">
+            <div className="letter__progress" aria-hidden="true">
               {progress.map((on, i) => (
                 <span key={i} data-on={on} />
               ))}
@@ -274,15 +274,15 @@ export default function Contact() {
               style={{ display: "none" }}
             />
 
-            <div className="letter_more">
+            <div className="letter__more">
               <div className="field">
                 <label htmlFor="c-message">{f.message}</label>
                 <textarea id="c-message" name="message" rows={6} placeholder={f.placeholder} required />
               </div>
 
               <div>
-                <h2 className="contact_sub">{c.listTitle}</h2>
-                <ul className="contact_list">
+                <h2 className="contact__sub">{c.listTitle}</h2>
+                <ul className="contact__list">
                   {c.list.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
@@ -290,22 +290,22 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="letter_send">
+            <div className="letter__send">
               <button
                 type="submit"
                 className={`btn btn--primary btn--lg send${sending ? " is-sending" : ""}`}
                 disabled={sending}
               >
                 <span>{f.send}</span>
-                <svg className="send_plane" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <svg className="send__plane" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
                   <path d="M3 11.5 21 3l-8.5 18-2.3-7.2L3 11.5Z" fill="currentColor" />
                 </svg>
               </button>
-              <p className="contact_note">{f.hint} {dict.footer.prices}</p>
+              <p className="contact__note">{f.hint} {dict.footer.prices}</p>
             </div>
 
             {failed && (
-              <p className="contact_error" role="alert">
+              <p className="contact__error" role="alert">
                 {f.error}{" "}
                 <a href={`mailto:${email}`}>{email}</a>
               </p>
@@ -313,9 +313,9 @@ export default function Contact() {
           </form>
         )}
 
-        <div className="contact_direct">
-          <p className="contact_label">{f.direct}</p>
-          <a className="contact_mail" href={`mailto:${email}`}>{email}</a>
+        <div className="contact__direct">
+          <p className="contact__label">{f.direct}</p>
+          <a className="contact__mail" href={`mailto:${email}`}>{email}</a>
         </div>
       </div>
     </section>
