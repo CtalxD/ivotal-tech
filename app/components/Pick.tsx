@@ -145,8 +145,8 @@ const Pick = forwardRef<PickHandle, Props>(function Pick(
 
       {open && (
         <>
-          <span className="pick_scrim" aria-hidden="true" onClick={() => setOpen(false)} />
-          <ul id={`${uid}-list`} role="listbox" aria-label={label} className="pick_menu">
+          <span className="pick__scrim" aria-hidden="true" onClick={() => setOpen(false)} />
+          <ul id={`${uid}-list`} role="listbox" aria-label={label} className="pick__menu">
             {options.map((o, i) => (
               <li
                 key={o.value || "none"}
