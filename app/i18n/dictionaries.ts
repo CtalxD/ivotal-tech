@@ -59,7 +59,7 @@ const en = {
       {
         name: "Websites",
         text: "Fast, mobile-ready sites with a clear layout and the SEO basics in place.",
-        items: ["Mobile responsive layout", "Basic SEO setup"],
+        items: ["Mobile responsive layout", "Basic SEO setup", "Contact form"],
       },
       {
         name: "Web applications",
@@ -236,7 +236,7 @@ const es: Dict = {
       {
         name: "Sitios web",
         text: "Sitios rápidos y adaptados a móviles, con una estructura clara y lo básico de SEO resuelto.",
-        items: ["Diseño adaptable a móviles", "SEO básico"],
+        items: ["Diseño adaptable a móviles", "SEO básico", "Formulario de contacto"],
       },
       {
         name: "Aplicaciones web",

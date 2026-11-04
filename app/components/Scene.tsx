@@ -1,7 +1,4 @@
 // app/components/Scene.tsx
-// The hero picture: a website, a dashboard and a phone screen layered on one plane, which is the
-// work the studio does. Drawn in the palette's own tones, no photos and no stock art.
-// Each layer builds in once on load (see .layer in css/home.css).
 
 import type { CSSProperties } from "react";
 

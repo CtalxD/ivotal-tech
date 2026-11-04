@@ -1,5 +1,4 @@
 // app/components/WorkPreview.tsx
-// Drawn stand-ins for project screenshots, shown until real images are added in page.tsx.
 
 const bars = [38, 62, 45, 78, 56, 88, 70];
 

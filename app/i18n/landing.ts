@@ -39,7 +39,7 @@ const en = {
     items: [
       {
         q: "What does the starting price include?",
-        a: "The core of each type of project. For a website that is a mobile responsive layout and basic SEO setup. A content management system and monthly maintenance are extra. We confirm the exact scope in the brief.",
+        a: "The core of each type of project. For a website that is a mobile responsive layout, basic SEO setup and a contact form. A content management system and monthly maintenance are extra. We confirm the exact scope in the brief.",
       },
       {
         q: "What if I need more than the base?",
@@ -105,7 +105,7 @@ const es: Landing = {
     items: [
       {
         q: "¿Qué incluye el precio inicial?",
-        a: "Lo esencial de cada tipo de proyecto. En un sitio web: diseño adaptable a móviles y SEO básico. El sistema de gestión de contenido y el mantenimiento mensual son extras. El alcance exacto lo confirmamos en el brief.",
+        a: "Lo esencial de cada tipo de proyecto. En un sitio web: diseño adaptable a móviles, SEO básico y formulario de contacto. El sistema de gestión de contenido y el mantenimiento mensual son extras. El alcance exacto lo confirmamos en el brief.",
       },
       {
         q: "¿Y si necesito más que lo básico?",
