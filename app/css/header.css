@@ -1,37 +1,29 @@
-/* app/css/header.css */
-/* A floating pill: the header itself is transparent so the page shows around it. */
-.site-header { position: sticky; top: 0; z-index: 50; padding-top: 14px; pointer-events: none; }
-.site-header .site-header__bar {
-  position: relative; display: flex; align-items: center; justify-content: space-between;
-  width: calc(100% - var(--gutter) * 2); max-width: var(--maxw); height: 64px;
-  margin-inline: auto; padding: 0 9px 0 22px;
-  background: rgba(250, 250, 248, 0.84); backdrop-filter: blur(18px);
-  border: 1px solid var(--mist); border-radius: 999px;
-  pointer-events: auto;
-}
+/* app/css/header.css
+   Solid background (no blur) so content scrolling behind the bar never changes link contrast. */
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
+.site-header__bar { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
 
 .site-nav { display: flex; align-items: center; gap: clamp(24px, 4vw, 48px); }
 .site-nav ul { display: flex; gap: 32px; }
-.site-nav ul a { padding: 8px 0; font-weight: 500; color: var(--slate); transition: color 0.2s; }
-.site-nav ul a:hover { color: var(--ink); }
-.site-nav__actions { display: flex; align-items: center; gap: 14px; }
+.site-nav ul a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1rem; font-weight: 700; color: var(--muted); text-underline-offset: 6px; text-decoration-thickness: 2px; transition: color 0.2s; }
+.site-nav ul a:hover { color: var(--ink); text-decoration: underline; }
+.site-nav__actions { display: flex; align-items: center; gap: 16px; }
 
-.menu-btn { display: none; position: relative; width: 46px; height: 46px; border: 0; border-radius: 50%; background: var(--ink); cursor: pointer; }
-.menu-btn:focus-visible { outline-offset: 2px; }
-.menu-btn__bars, .menu-btn__bars::before, .menu-btn__bars::after { position: absolute; left: 50%; width: 18px; height: 2px; background: var(--paper); transform: translateX(-50%); transition: transform 0.25s, top 0.25s; }
+.menu-btn { display: none; position: relative; width: 48px; height: 48px; border: 2px solid var(--deep); border-radius: var(--r-control); background: transparent; cursor: pointer; }
+.menu-btn__bars, .menu-btn__bars::before, .menu-btn__bars::after { position: absolute; left: 50%; width: 20px; height: 2px; background: var(--deep); transform: translateX(-50%); transition: transform 0.25s, top 0.25s; }
 .menu-btn__bars { top: 50%; margin-top: -1px; }
 .menu-btn__bars::before, .menu-btn__bars::after { content: ""; }
-.menu-btn__bars::before { top: -6px; }
-.menu-btn__bars::after { top: 6px; }
+.menu-btn__bars::before { top: -7px; }
+.menu-btn__bars::after { top: 7px; }
 .menu-btn[aria-expanded="true"] .menu-btn__bars { background: transparent; }
 .menu-btn[aria-expanded="true"] .menu-btn__bars::before { top: 0; transform: translateX(-50%) rotate(45deg); }
 .menu-btn[aria-expanded="true"] .menu-btn__bars::after { top: 0; transform: translateX(-50%) rotate(-45deg); }
 
-@media (max-width: 860px) {
+@media (max-width: 800px) {
   .menu-btn { display: block; }
-  .site-nav { display: none; position: absolute; top: calc(100% + 10px); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 20px; padding: 14px 24px 24px; background: var(--paper); border: 1px solid var(--mist); border-radius: 28px; }
+  .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 24px; padding: 8px var(--gutter) 28px; background: var(--bg); border-bottom: 1px solid var(--line); }
   .site-nav--open { display: flex; }
   .site-nav ul { flex-direction: column; gap: 0; }
-  .site-nav ul a { display: block; padding: 16px 0; font-size: 1.5rem; font-weight: 500; letter-spacing: -0.025em; color: var(--ink); border-bottom: 1px solid var(--mist); }
-  .site-nav__actions { justify-content: space-between; }
+  .site-nav ul a { display: flex; min-height: 64px; font-family: var(--font-display), system-ui, sans-serif; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--ink); border-bottom: 1px solid var(--line); }
+  .site-nav__actions { flex-wrap: wrap; justify-content: space-between; }
 }

@@ -3,19 +3,16 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Variant = "words" | "rise" | "line" | "mask";
-type Tag = "div" | "section" | "article" | "h1" | "h2" | "p" | "ul" | "ol" | "li" | "figure";
+type Tag = "div" | "section" | "article" | "h1" | "h2" | "p" | "ul" | "ol" | "li";
 
-// Adds "is-in" once the element scrolls into view. The animation itself lives in css/home.css.
+// Fades and lifts an element in once it scrolls into view. The animation lives in css/home.css.
 export default function Reveal({
   as = "div",
-  variant = "rise",
   delay = 0,
   className = "",
   children,
 }: {
   as?: Tag;
-  variant?: Variant;
   delay?: number;
   className?: string;
   children: React.ReactNode;
@@ -33,7 +30,7 @@ export default function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -4% 0px" }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -43,25 +40,10 @@ export default function Reveal({
   return (
     <Component
       ref={ref}
-      className={`reveal reveal--${variant}${on ? " is-in" : ""} ${className}`.trim()}
+      className={`reveal${on ? " is-in" : ""} ${className}`.trim()}
       style={{ "--d": `${delay}ms` } as React.CSSProperties}
     >
       {children}
     </Component>
-  );
-}
-
-// Splits a sentence into words that slide up out of a mask, one after another.
-export function Words({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(" ").map((word, i) => (
-        <span key={i}>
-          <span className="word">
-            <span style={{ "--w": i } as React.CSSProperties}>{word}</span>
-          </span>{" "}
-        </span>
-      ))}
-    </>
   );
 }

@@ -33,7 +33,6 @@ export default function Footer({ year }: { year: number }) {
           <h2>{f.company}</h2>
           <ul>
             <li><Link href="/#process">{f.links.how}</Link></li>
-            <li><Link href="/#work">{f.links.work}</Link></li>
             <li><Link href="/#contact">{f.links.contact}</Link></li>
           </ul>
         </nav>

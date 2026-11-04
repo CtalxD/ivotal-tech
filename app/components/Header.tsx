@@ -16,7 +16,6 @@ export default function Header() {
   const links = [
     { href: "/#services", label: dict.nav.services },
     { href: "/#process", label: dict.nav.process },
-    { href: "/#work", label: dict.nav.work },
   ];
 
   return (
@@ -34,7 +33,7 @@ export default function Header() {
           </ul>
           <div className="site-nav__actions">
             <LangSwitch />
-            <Link href="/#contact" className="btn btn--mint" onClick={close}>{dict.nav.cta}</Link>
+            <Link href="/#contact" className="btn btn--primary" onClick={close}>{dict.nav.cta}</Link>
           </div>
         </nav>
 

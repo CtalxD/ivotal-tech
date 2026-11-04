@@ -16,7 +16,7 @@ export default function NotFound() {
         <p className="nf__code" aria-hidden="true">404</p>
         <h1>{t.title}</h1>
         <p className="nf__text">{t.text}</p>
-        <Link href="/" className="btn btn--mint btn--lg">{t.button}</Link>
+        <Link href="/" className="btn btn--primary btn--lg">{t.button}</Link>
       </div>
     </section>
   );

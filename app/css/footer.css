@@ -1,30 +1,24 @@
-/* app/css/footer.css */
-.site-footer { position: relative; overflow: hidden; background: var(--ink); color: var(--paper); padding-top: clamp(64px, 8vw, 104px); }
-.site-footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 64px; }
-.site-footer__brand p { margin-top: 22px; max-width: 36ch; color: var(--on-dark); font-size: 1.05rem; }
-.site-footer h2 { margin-bottom: 18px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0; color: var(--paper); }
-.site-footer li + li { margin-top: 10px; }
-.site-footer nav a { color: var(--on-dark); transition: color 0.2s; }
-.site-footer nav a:hover { color: #fff; }
-.site-footer :focus-visible { outline-color: var(--bronze-soft); }
+/* app/css/footer.css
+   The darkest step of the palette closes the page. Link text is white on ink, headings use the light muted tone (about 9:1). */
+.site-footer { background: var(--ink); color: var(--white); padding-top: clamp(56px, 8vw, 96px); }
+.site-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 72px; }
+.site-footer__brand p { max-width: 36ch; margin-top: 20px; font-size: 1rem; color: var(--muted-light); }
+.site-footer h2 { margin-bottom: 16px; font-family: var(--font-body), system-ui, sans-serif; font-size: 0.9375rem; font-weight: 700; letter-spacing: 0; color: var(--muted-light); }
+.site-footer nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1rem; text-underline-offset: 4px; }
+.site-footer nav a:hover { color: var(--tint2); text-decoration: underline; }
+.site-footer :focus-visible { outline-color: var(--tint2); }
 
-.site-footer .logo { color: var(--paper); }
-.site-footer .logo__tile { fill: var(--paper); }
-.site-footer .logo__glyph { fill: var(--ink); }
-.site-footer .logo__v { fill: none; stroke: var(--ink); }
-.site-footer .logo__dot { fill: var(--bronze); }
-.site-footer .logo__sub { color: var(--on-dark); }
+.site-footer .logo { color: var(--white); }
+.site-footer .logo__tile, .site-footer .logo__ball { fill: var(--tint); }
+.site-footer .logo__wedge { fill: var(--ink); }
+.site-footer .logo__name span { color: var(--muted-light); }
 
-.site-footer .lang { border-color: rgba(250, 250, 248, 0.22); }
-.site-footer .lang button { color: var(--on-dark); }
-.site-footer .lang button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
-.site-footer .lang button[aria-pressed="false"]:hover { color: #fff; }
+.site-footer .lang { border-color: var(--line-dark); }
+.site-footer .lang button { color: var(--muted-light); }
+.site-footer .lang button[aria-pressed="true"] { background: var(--tint); color: var(--ink); }
+.site-footer .lang button[aria-pressed="false"]:hover { background: rgba(255, 255, 255, 0.12); color: var(--white); }
 
-.site-footer__base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 24px; border-top: 1px solid rgba(250, 250, 248, 0.14); color: var(--on-dark); font-size: 0.9rem; }
-.site-footer__base p { font-family: var(--font-display), system-ui, sans-serif; font-size: 0.9rem; }
-
-/* Oversized wordmark, decorative only */
-.site-footer::after { content: "ivotal"; content: "ivotal" / ""; display: block; margin: 8px 0 -0.14em; padding-inline: var(--gutter); font-size: clamp(6.5rem, 26vw, 22rem); font-weight: 600; letter-spacing: -0.07em; line-height: 0.8; color: rgba(250, 250, 248, 0.07); pointer-events: none; user-select: none; }
+.site-footer__base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-block: 24px; border-top: 1px solid var(--line-dark); font-size: 0.9375rem; color: var(--muted-light); }
 
 @media (max-width: 900px) { .site-footer__grid { grid-template-columns: 1fr 1fr; } .site-footer__brand { grid-column: 1 / -1; } }
 @media (max-width: 480px) { .site-footer__grid { grid-template-columns: 1fr; } }

@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Familjen_Grotesk, Newsreader } from "next/font/google";
+import { Familjen_Grotesk, Atkinson_Hyperlegible } from "next/font/google";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,8 +8,9 @@ import SkipLink from "./components/SkipLink";
 import { getYear } from "./components/year";
 import "./globals.css";
 
+// Headings: Familjen Grotesk. Reading text: Atkinson Hyperlegible, drawn for legibility.
 const display = Familjen_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
-const body = Newsreader({ subsets: ["latin"], axes: ["opsz"], variable: "--font-body", display: "swap" });
+const body = Atkinson_Hyperlegible({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-body", display: "swap" });
 
 // English metadata for crawlers. LanguageProvider updates the title and description when the visitor switches language.
 export const metadata: Metadata = {
@@ -25,10 +26,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
       <body>
         <noscript>
-          <style>{`.reveal,.reveal *{opacity:1!important;transform:none!important;clip-path:none!important}.curtain{display:none}`}</style>
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <LanguageProvider>
-          <div className="progress" aria-hidden="true" />
           <SkipLink />
           <Header />
           <main id="main">{children}</main>

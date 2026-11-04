@@ -1,96 +1,103 @@
-/* app/css/globals.css */
+/* app/globals.css
+
+   Design rules and the reason for each:
+   1. One hue only. Every colour is a lighter or darker step of the same forest green, so nothing
+      fights for attention and the page feels calm. Hierarchy comes from lightness, not from a second colour.
+   2. Lightness steps are used as meaning: the lightest surface is the entry level, the darkest is the most
+      complete. The price steps and the process rail both follow this.
+   3. Every text and background pair is at least 4.5:1. Body copy on light backgrounds is about 6:1.
+   4. Spacing follows an 8px scale. Touch targets are at least 44px tall.
+   5. Body text is 17px with 1.6 line height. Lines are capped near 65 characters.
+   6. Two typefaces with clear jobs: Familjen Grotesk for headings, Atkinson Hyperlegible for reading.
+   7. Two radii: 10px for controls and 24px for panels.
+   8. Motion appears in two places only: the hero scene builds once on load, and the service panel fades
+      when the person picks another tab. Both stop for people who ask for less motion. */
 :root {
   color-scheme: light;
-  --bg: #edede9;
-  --paper: #fafaf8;
-  --ink: #1a1a19;
-  --ink-2: #232321;
-  --slate: #5c5c57;
-  --mist: #d0d0ca;
-  --bronze: #9a6a3a;
-  --bronze-soft: #d2a47a;
-  --on-dark: #aaaaa4;
+
+  --bg: #eef2ec;
+  --surface: #f9fbf7;
+  --white: #ffffff;
+  --tint: #dce6d8;
+  --tint2: #bfd2b8;
+  --mid: #3b7650;
+  --deep: #17402a;
+  --deep2: #21533a;
+  --ink: #0c2216;
+  --muted: #4a5f50;
+  --muted-light: #b4cfba;
+  --on-mid: #eaf4ec;
+  --line: #c5d3c0;
+  --line-dark: rgba(255, 255, 255, 0.2);
 
   --maxw: 1200px;
   --gutter: clamp(20px, 4vw, 40px);
-  --header-h: 82px;
-  --ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --header-h: 72px;
+  --r-control: 10px;
+  --r-panel: 24px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; }
+::selection { background: var(--tint2); color: var(--ink); }
 
-/* Familjen Grotesk carries the interface and headlines; Newsreader sets the reading text. */
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-h1, h2, h3 { margin: 0; font-family: var(--font-display), system-ui, sans-serif; font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
-p { margin: 0; font-family: var(--font-body), Georgia, serif; font-size: 1.18rem; line-height: 1.6; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
 .container { width: 100%; max-width: calc(var(--maxw) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.skip-link { position: absolute; left: 16px; top: -60px; z-index: 300; padding: 10px 16px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 600; }
+.skip-link { position: absolute; left: 16px; top: -64px; z-index: 300; padding: 12px 16px; border-radius: var(--r-control); background: var(--deep); color: var(--white); font-weight: 700; }
 .skip-link:focus { top: 12px; }
-:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--mid); outline-offset: 3px; }
 
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 46px; padding: 0 26px;
-  border: 1.5px solid transparent; border-radius: 999px;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.98rem; font-weight: 600; letter-spacing: -0.005em; line-height: 1; white-space: nowrap; cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-.btn--lg { min-height: 62px; padding: 0 38px; font-size: 1.08rem; }
-.btn--mint { background: var(--ink); color: var(--paper); }
-.btn--mint:hover { background: var(--bronze); }
-.btn--outline { border-color: var(--ink); color: var(--ink); }
-.btn--outline:hover { background: var(--ink); color: var(--paper); }
-.btn--dark { background: var(--ink); color: var(--paper); }
-.btn--dark:hover { background: var(--bronze); }
+/* Buttons: 48px tall, the label says what happens, hover darkens so the change is obvious */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border: 2px solid var(--deep); border-radius: var(--r-control); font-family: var(--font-display), system-ui, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1; white-space: nowrap; cursor: pointer; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+.btn--lg { min-height: 56px; padding: 0 32px; font-size: 1.0625rem; }
+.btn--primary { background: var(--deep); color: var(--white); }
+.btn--primary:hover { background: var(--ink); border-color: var(--ink); }
+.btn--outline { background: transparent; color: var(--deep); }
+.btn--outline:hover { background: var(--tint); }
 
-/* Logo */
-.logo { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); }
-.logo__tile { fill: var(--ink); }
-.logo__glyph { fill: var(--paper); }
-.logo__v { fill: none; stroke: var(--paper); stroke-width: 4.5; stroke-linejoin: miter; stroke-miterlimit: 10; }
-.logo__dot { fill: var(--bronze-soft); }
-.logo__text { display: flex; flex-direction: column; line-height: 1; }
-.logo__name { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.05em; }
-.logo__sub { margin-top: 4px; font-size: 0.76rem; font-weight: 500; letter-spacing: 0.01em; color: var(--slate); }
+/* Logo: a deep square with a V cut into the top edge and a ball resting where the V closes */
+.logo { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+.logo__tile, .logo__ball { fill: var(--deep); }
+.logo__wedge { fill: var(--tint2); }
+.logo__name { font-family: var(--font-display), system-ui, sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.logo__name span { font-weight: 500; color: var(--muted); }
 
-/* Language switch */
-.lang { display: inline-flex; padding: 3px; border: 1.5px solid var(--mist); border-radius: 999px; }
-.lang button { appearance: none; border: 0; background: transparent; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 30px; padding: 0 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; color: var(--slate); transition: color 0.2s, background-color 0.2s; }
-.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.lang button[aria-pressed="false"]:hover { color: var(--ink); }
+/* Language switch: the current language is filled, so the state never depends on hue alone */
+.lang { display: inline-flex; gap: 2px; padding: 3px; border: 2px solid var(--deep); border-radius: var(--r-control); }
+.lang button { appearance: none; border: 0; background: transparent; cursor: pointer; font-family: inherit; min-width: 44px; height: 36px; padding: 0 8px; border-radius: 6px; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.02em; color: var(--deep); transition: background-color 0.2s, color 0.2s; }
+.lang button[aria-pressed="true"] { background: var(--deep); color: var(--white); }
+.lang button[aria-pressed="false"]:hover { background: var(--tint); }
 
-/* Scroll progress line (browsers with scroll-driven animations) */
-.progress { position: fixed; top: 0; left: 0; z-index: 120; width: 100%; height: 3px; background: var(--bronze); transform: scaleX(0); transform-origin: left; display: none; }
-@supports (animation-timeline: scroll()) {
-  .progress { display: block; animation: progress linear both; animation-timeline: scroll(root); }
-}
-@keyframes progress { to { transform: scaleX(1); } }
-
-/* Page transition: a charcoal curtain lifts on every route change */
-.curtain { position: fixed; inset: 0; z-index: 200; background: var(--ink); pointer-events: none; animation: curtain 1s var(--ease) 0.15s forwards; }
-@keyframes curtain { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 0 100% 0); } }
+/* Fills for the drawn scenes (Scene.tsx and Preview.tsx). One class per tone in the palette. */
+.f-bg { fill: var(--bg); }
+.f-surface { fill: var(--surface); }
+.f-tint { fill: var(--tint); }
+.f-tint2 { fill: var(--tint2); }
+.f-mid { fill: var(--mid); }
+.f-deep { fill: var(--deep); }
+.f-deep2 { fill: var(--deep2); }
+.f-ink { fill: var(--ink); }
+.s-mid { fill: none; stroke: var(--mid); stroke-width: 3; stroke-linecap: round; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .curtain, .progress { display: none !important; }
 }
