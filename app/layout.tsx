@@ -8,11 +8,9 @@ import SkipLink from "./components/SkipLink";
 import { getYear } from "./components/year";
 import "./globals.css";
 
-// Headings: Familjen Grotesk. Reading text: Atkinson Hyperlegible, drawn for legibility.
 const display = Familjen_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Atkinson_Hyperlegible({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-body", display: "swap" });
 
-// English metadata for crawlers. LanguageProvider updates the title and description when the visitor switches language.
 export const metadata: Metadata = {
   title: "Ivotal Technology | Websites, web apps and custom software",
   description:
